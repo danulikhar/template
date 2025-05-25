@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <!--
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -18,12 +16,288 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
+  <title>React App</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root">
+    <div class="app-wrapper">
+        <header class="site-header">
+            <div class="container header-container">
+                <div class="site-header__logo">
+                    <a href="#">Last.fm</a> <span class="site-header__logo-beta">Beta</span>
+                </div>
+                <nav class="site-header__nav">
+                    <ul>
+                        <li><a href="#" class="nav-link">Home</a></li>
+                        <li><a href="#" class="nav-link">Live</a></li>
+                        <li><a href="#" class="nav-link active">Music</a></li>
+                        <li><a href="#" class="nav-link">Charts</a></li>
+                        <li><a href="#" class="nav-link">Events</a></li>
+                        <li><a href="#" class="nav-link">Features</a></li>
+                    </ul>
+                </nav>
+                <div class="site-header__search">
+                    <input type="search" class="search-input" placeholder="Search artists, tracks, albums">
+                    <button type="button" class="search-button">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>
+                    </button>
+                </div>
+                <div class="site-header__user-actions">
+                    <a href="#" class="user-action-link">Login</a>
+                    <a href="#" class="user-action-link user-action-link--signup">Sign Up</a>
+                </div>
+            </div>
+        </header>
+
+        <main class="site-main">
+            <div class="container">
+
+                <section class="music-overview-section">
+                    <h1 class="main-title">Music</h1>
+
+                    <section class="content-section">
+                        <h2 class="section-title">Hot right now</h2>
+                        <div class="artist-grid artist-grid--hot">
+                            <div class="artist-card artist-card--circular">
+                                <img src="https://placehold.co/150x150/333/fff?text=Artist1" alt="Artist 1" class="artist-card__image">
+                                <h3 class="artist-card__name">Kanye West</h3>
+                                <p class="artist-card__tags">hip-hop, rap, hip hop</p>
+                            </div>
+                            <div class="artist-card artist-card--circular">
+                                <img src="https://placehold.co/150x150/333/fff?text=Artist2" alt="Artist 2" class="artist-card__image">
+                                <h3 class="artist-card__name">J-Hope</h3>
+                                <p class="artist-card__tags">k-pop, hip-hop, korean</p>
+                            </div>
+                            <div class="artist-card artist-card--circular">
+                                <img src="https://placehold.co/150x150/333/fff?text=Artist3" alt="Artist 3" class="artist-card__image">
+                                <h3 class="artist-card__name">The Weeknd</h3>
+                                <p class="artist-card__tags">rnb, electronic, canadian</p>
+                            </div>
+                            <div class="artist-card artist-card--circular">
+                                <img src="https://placehold.co/150x150/333/fff?text=Artist4" alt="Artist 4" class="artist-card__image">
+                                <h3 class="artist-card__name">Tyler, the Creator</h3>
+                                <p class="artist-card__tags">hip-hop, rap, ofwgkta</p>
+                            </div>
+                            <div class="artist-card artist-card--circular">
+                                <img src="https://placehold.co/150x150/333/fff?text=Artist5" alt="Artist 5" class="artist-card__image">
+                                <h3 class="artist-card__name">Drake</h3>
+                                <p class="artist-card__tags">hip-hop, rap, rnb</p>
+                            </div>
+                             <div class="artist-card artist-card--circular">
+                                <img src="https://placehold.co/150x150/333/fff?text=Artist6" alt="Artist 6" class="artist-card__image">
+                                <h3 class="artist-card__name">Steve Lacy</h3>
+                                <p class="artist-card__tags">free jazz, jazz, saxophone</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="content-section">
+                        <h2 class="section-title">Popular tracks</h2>
+                        <div class="track-list track-list--popular">
+                            <div class="track-item">
+                                <img src="https://placehold.co/50x50/444/fff?text=Art" alt="Album Art" class="track-item__artwork">
+                                <div class="track-item__info">
+                                    <h4 class="track-item__title">SEXY NUKIM (feat. RM of BTS)</h4>
+                                    <p class="track-item__artist">Balming Tiger</p>
+                                    <p class="track-item__genre">hip-hop, k-rap, alternative</p>
+                                </div>
+                                </div>
+                            <div class="track-item">
+                                <img src="https://placehold.co/50x50/444/fff?text=Art" alt="Album Art" class="track-item__artwork">
+                                <div class="track-item__info">
+                                    <h4 class="track-item__title">After LIKE</h4>
+                                    <p class="track-item__artist">IVE</p>
+                                     <p class="track-item__genre">k-pop, disco, sixty</p>
+                                </div>
+                            </div>
+                            <div class="track-item">
+                                <img src="https://placehold.co/50x50/444/fff?text=Art" alt="Album Art" class="track-item__artwork">
+                                <div class="track-item__info">
+                                    <h4 class="track-item__title">Romantic Homicide</h4>
+                                    <p class="track-item__artist">d4vd</p>
+                                     <p class="track-item__genre">indie</p>
+                                </div>
+                            </div>
+                             <div class="track-item">
+                                <img src="https://placehold.co/50x50/444/fff?text=Art" alt="Album Art" class="track-item__artwork">
+                                <div class="track-item__info">
+                                    <h4 class="track-item__title">MORE</h4>
+                                    <p class="track-item__artist">J-Hope</p>
+                                     <p class="track-item__genre">rock, hip-hop, rap</p>
+                                </div>
+                            </div>
+                            <div class="track-item">
+                                <img src="https://placehold.co/50x50/444/fff?text=Art" alt="Album Art" class="track-item__artwork">
+                                <div class="track-item__info">
+                                    <h4 class="track-item__title">Talk That Talk</h4>
+                                    <p class="track-item__artist">TWICE</p>
+                                     <p class="track-item__genre">k-pop, korean hip-hop</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+
+                <section class="search-results-section" style="display: none;"> <h1 class="main-title">Search results for "<span class="search-query-display">never gonna give you up</span>"</h1>
+
+                    <nav class="search-results-tabs">
+                        <a href="#" class="tab-link active">Top Results</a>
+                        <a href="#" class="tab-link">Artists</a>
+                        <a href="#" class="tab-link">Albums</a>
+                        <a href="#" class="tab-link">Tracks</a>
+                    </nav>
+
+                    <section class="content-section">
+                        <div class="section-header">
+                            <h2 class="section-title">Artists</h2>
+                            <a href="#" class="more-link">More artists &gt;</a>
+                        </div>
+                        <div class="artist-grid artist-grid--results">
+                            <div class="artist-card artist-card--square">
+                                <img src="https://placehold.co/130x130/333/fff?text=R.Astley" alt="Rick Astley" class="artist-card__image">
+                                <h3 class="artist-card__name">Rick Astley</h3>
+                                <p class="artist-card__meta">1,751 listeners</p>
+                            </div>
+                            <div class="artist-card artist-card--square">
+                                <img src="https://placehold.co/130x130/333/fff?text=Artist+B" alt="Artist B" class="artist-card__image">
+                                <h3 class="artist-card__name">Never Gonna Give You Up (Pianoforte)</h3>
+                                <p class="artist-card__meta">62 listeners</p>
+                            </div>
+                            <div class="artist-card artist-card--square">
+                                <img src="https://placehold.co/130x130/333/fff?text=Artist+C" alt="Artist C" class="artist-card__image">
+                                <h3 class="artist-card__name">Never Gonna Give You Up</h3>
+                                <p class="artist-card__meta">61 listeners</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="content-section">
+                        <div class="section-header">
+                            <h2 class="section-title">Albums</h2>
+                            <a href="#" class="more-link">More albums &gt;</a>
+                        </div>
+                        <div class="album-grid">
+                            <div class="album-card">
+                                <img src="https://placehold.co/170x170/555/fff?text=Album1" alt="Album 1" class="album-card__cover">
+                                <h3 class="album-card__title">Never Gonna Give You Up</h3>
+                                <p class="album-card__artist">Rick Astley</p>
+                            </div>
+                            <div class="album-card">
+                                <img src="https://placehold.co/170x170/555/fff?text=Album2" alt="Album 2" class="album-card__cover">
+                                <h3 class="album-card__title">Never Gonna Give You Up</h3>
+                                <p class="album-card__artist">The Black Keys</p>
+                            </div>
+                            <div class="album-card">
+                                <img src="https://placehold.co/170x170/555/fff?text=Album3" alt="Album 3" class="album-card__cover">
+                                <h3 class="album-card__title">Never Gonna Give You Up</h3>
+                                <p class="album-card__artist">Never Gonna Give You Up</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="content-section">
+                        <div class="section-header">
+                            <h2 class="section-title">Tracks</h2>
+                            <a href="#" class="more-link">More tracks &gt;</a>
+                        </div>
+                        <div class="track-list track-list--results">
+                            <div class="track-item track-item--result">
+                                <div class="track-item__play-icon">▶</div>
+                                <img src="https://placehold.co/50x50/444/fff?text=Art" alt="Album Art" class="track-item__artwork">
+                                <div class="track-item__info">
+                                    <h4 class="track-item__title">Never Gonna Give You Up</h4>
+                                    <p class="track-item__artist">Rick Astley</p>
+                                </div>
+                                <div class="track-item__duration">3:35</div>
+                            </div>
+                            <div class="track-item track-item--result">
+                                <div class="track-item__play-icon">▶</div>
+                                <img src="https://placehold.co/50x50/444/fff?text=Art" alt="Album Art" class="track-item__artwork">
+                                <div class="track-item__info">
+                                    <h4 class="track-item__title">Never Gonna Give You Up</h4>
+                                    <p class="track-item__artist">The Black Keys</p>
+                                </div>
+                                <div class="track-item__duration">3:39</div>
+                            </div>
+                             <div class="track-item track-item--result">
+                                <div class="track-item__play-icon">▶</div>
+                                <img src="https://placehold.co/50x50/444/fff?text=Art" alt="Album Art" class="track-item__artwork">
+                                <div class="track-item__info">
+                                    <h4 class="track-item__title">Never, Never Gonna Give You Up</h4>
+                                    <p class="track-item__artist">Barry White</p>
+                                </div>
+                                <div class="track-item__duration">4:09</div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container footer-container">
+                <div class="footer-column">
+                    <h4 class="footer-column__title">COMPANY</h4>
+                    <ul>
+                        <li><a href="#">About Last.fm</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Jobs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-column__title">HELP</h4>
+                    <ul>
+                        <li><a href="#">Track My Music</a></li>
+                        <li><a href="#">Community Support</a></li>
+                        <li><a href="#">Community Guidelines</a></li>
+                        <li><a href="#">Help</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-column__title">GOODIES</h4>
+                    <ul>
+                        <li><a href="#">Download Scrobbler</a></li>
+                        <li><a href="#">Developer API</a></li>
+                        <li><a href="#">Free Music Downloads</a></li>
+                        <li><a href="#">Merchandise</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-column__title">ACCOUNT</h4>
+                    <ul>
+                        <li><a href="#">Inbox</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li><a href="#">Last.fm Pro</a></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-column__title">FOLLOW US</h4>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container footer-bottom-bar">
+                <div class="footer-language-switcher">
+                    <span>English</span> <a href="#">Deutsch</a> <a href="#">Español</a> </div>
+                <div class="footer-copyright">
+                    <p>Audioscrobbler</p>
+                    <p>Time zone: <span>Europe/Moscow</span></p>
+                    <p>© CBS Interactive © 2023 Last.fm Ltd. All rights reserved · <a href="#">Terms of Use</a> · <a href="#">Privacy Policy</a> · <a href="#">Legal Policies</a> · <a href="#">Cookies Policy</a> · <a href="#">Do Not Sell My Personal Information</a></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+  </div>
+  <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -33,5 +307,7 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+
+</body>
+
 </html>
