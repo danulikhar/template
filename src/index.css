@@ -1,0 +1,558 @@
+/* Basic Reset & Globals */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #181818; /* Dark background */
+    color: #ffffff;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+a {
+    color: #b3b3b3;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1100px; /* Adjusted for content, original looks wider like 1200-1400px but 1100 is safe for 1024 */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* App Wrapper for potential sticky footer or full height layouts */
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.site-main {
+    flex-grow: 1;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+/* Site Header */
+.site-header {
+    background-color: #282828; /* Slightly lighter than body */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #000;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-header__logo a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+}
+.site-header__logo a:hover {
+    color: #e6001a; /* Last.fm red */
+}
+.site-header__logo-beta {
+    font-size: 0.7em;
+    color: #b3b3b3;
+    margin-left: 5px;
+    vertical-align: super;
+}
+
+
+.site-header__nav ul {
+    display: flex;
+}
+
+.site-header__nav .nav-link {
+    padding: 8px 12px;
+    color: #b3b3b3;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    text-decoration: none;
+}
+
+.site-header__nav .nav-link:hover,
+.site-header__nav .nav-link.active {
+    color: #ffffff;
+    border-bottom: 2px solid #e6001a; /* Last.fm red */
+}
+
+.site-header__search {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 5px 8px;
+    min-width: 250px; /* Ensure it has some width */
+}
+
+.site-header__search .search-input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    padding: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+.site-header__search .search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+.site-header__search .search-button svg {
+    fill: #535353;
+}
+
+
+.site-header__user-actions .user-action-link {
+    color: #b3b3b3;
+    margin-left: 15px;
+    font-size: 0.9em;
+    text-decoration: none;
+}
+.site-header__user-actions .user-action-link:hover {
+    color: #fff;
+}
+.site-header__user-actions .user-action-link--signup {
+    background-color: #e6001a;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+.site-header__user-actions .user-action-link--signup:hover {
+    background-color: #c20016;
+    text-decoration: none;
+}
+
+
+/* Main Content Typography */
+.main-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.section-title {
+    font-size: 22px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+}
+
+.content-section {
+    margin-bottom: 40px;
+}
+
+/* Artist Grid (Hot right now & Search Results) */
+.artist-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.artist-grid--hot {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+.artist-grid--results {
+     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+}
+
+
+.artist-card {
+    background-color: #282828; /* Card background */
+    padding: 15px;
+    text-align: center;
+    border-radius: 4px;
+}
+.artist-card--circular .artist-card__image {
+    width: 120px; /* Smaller than placeholder to fit padding */
+    height: 120px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+.artist-card--square .artist-card__image {
+    width: 100%; /* Fill card width for square */
+    max-width: 130px; /* Match placeholder used in HTML */
+    height: auto;
+    aspect-ratio: 1 / 1; /* Make it square */
+    margin-bottom: 10px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+
+.artist-card__name {
+    font-size: 1em;
+    color: #ffffff;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.artist-card__name:hover {
+    text-decoration: underline;
+}
+
+.artist-card__tags,
+.artist-card__meta {
+    font-size: 0.8em;
+    color: #b3b3b3;
+}
+
+/* Track List (Popular & Search Results) */
+.track-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.track-item {
+    display: flex;
+    align-items: center;
+    background-color: transparent; /* Or #282828 if cards are desired */
+    padding: 8px 0; /* Minimal padding for list items */
+    border-bottom: 1px solid #333; /* Separator for popular tracks */
+}
+.track-list--popular .track-item:last-child {
+    border-bottom: none;
+}
+
+
+.track-item__artwork {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+.track-item__info {
+    flex-grow: 1;
+}
+
+.track-item__title {
+    font-size: 1em;
+    color: #ffffff;
+    font-weight: normal; /* Titles are not overly bold in example */
+}
+.track-item__title:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.track-item__artist,
+.track-item__genre {
+    font-size: 0.85em;
+    color: #b3b3b3;
+}
+.track-item__genre {
+    font-size: 0.75em;
+}
+
+/* Search Results Specifics */
+.search-results-section .main-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: normal;
+}
+.search-results-section .main-title .search-query-display {
+    font-weight: bold;
+}
+
+.search-results-tabs {
+    margin-bottom: 25px;
+    border-bottom: 1px solid #444;
+}
+
+.search-results-tabs .tab-link {
+    padding: 10px 15px;
+    margin-right: 5px;
+    color: #b3b3b3;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block; /* For padding and border */
+    border-bottom: 3px solid transparent;
+}
+.search-results-tabs .tab-link:hover {
+    color: #ffffff;
+}
+.search-results-tabs .tab-link.active {
+    color: #ffffff;
+    border-bottom-color: #e6001a; /* Last.fm red */
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px; /* Reduced from section-title's default */
+}
+.section-header .section-title {
+    margin-top: 0; /* Reset margin as it's inside section-header */
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.more-link {
+    font-size: 0.9em;
+    color: #b3b3b3;
+    text-decoration: none;
+}
+.more-link:hover {
+    color: #ffffff;
+}
+
+/* Album Grid (Search Results) */
+.album-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 20px;
+}
+
+.album-card {
+    background-color: #282828;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.album-card__cover {
+    width: 100%;
+    /* max-width: 170px; */ /* Handled by grid column size */
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 2px;
+}
+
+.album-card__title {
+    font-size: 0.9em;
+    color: #ffffff;
+    margin-bottom: 3px;
+    font-weight: bold;
+}
+.album-card__title:hover {
+    text-decoration: underline;
+}
+
+.album-card__artist {
+    font-size: 0.8em;
+    color: #b3b3b3;
+}
+
+/* Track List (Search Results specifics) */
+.track-list--results .track-item {
+    /* Similar to popular, but with play icon and duration */
+    border-bottom: 1px solid #333; /* Ensure all items have a border */
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.track-list--results .track-item:last-child {
+    border-bottom: none;
+}
+
+
+.track-item__play-icon {
+    color: #b3b3b3;
+    margin-right: 10px;
+    font-size: 1.2em; /* Make play icon slightly larger */
+    cursor: pointer;
+}
+.track-item__play-icon:hover {
+    color: #fff;
+}
+
+.track-item__duration {
+    margin-left: auto; /* Pushes duration to the right */
+    padding-left: 15px; /* Space from track info */
+    font-size: 0.9em;
+    color: #b3b3b3;
+}
+
+
+/* Site Footer */
+.site-footer {
+    background-color: #282828;
+    color: #b3b3b3;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    font-size: 0.85em;
+    border-top: 1px solid #000;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allow columns to wrap on smaller screens if needed */
+    gap: 20px; /* Space between columns */
+    margin-bottom: 20px;
+}
+
+.footer-column {
+    flex: 1; /* Allow columns to grow and shrink */
+    min-width: 150px; /* Minimum width before wrapping */
+}
+
+.footer-column__title {
+    color: #ffffff;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    color: #b3b3b3;
+    text-decoration: none;
+}
+
+.footer-column ul li a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.footer-bottom-bar {
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    font-size: 0.8em;
+    color: #888;
+}
+.footer-bottom-bar p {
+    margin-bottom: 5px;
+}
+.footer-bottom-bar a {
+    color: #aaa;
+}
+.footer-bottom-bar a:hover {
+    color: #fff;
+}
+.footer-language-switcher {
+    margin-bottom: 10px;
+}
+.footer-language-switcher a {
+    margin-left: 5px;
+}
+.footer-language-switcher span { /* Current language */
+    color: #fff;
+}
+
+/* Responsive adjustments for 1024px */
+@media (max-width: 1024px) {
+    .container {
+        width: 95%; /* Use more width on smaller screens */
+    }
+
+    .site-header__nav {
+        /* Could hide some nav items or make them a burger menu on smaller views,
+           but for 1024 the current setup might still fit.
+           If not, adjust font size or padding. */
+        /* Example: display: none; and add a burger menu icon */
+    }
+    .site-header__search {
+        min-width: 200px; /* Slightly reduce search bar width */
+    }
+
+    .artist-grid--hot {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); /* Adjust card sizes */
+    }
+    .artist-card--circular .artist-card__image {
+        width: 100px;
+        height: 100px;
+    }
+     .album-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+}
+
+@media (max-width: 768px) { /* Further adjustments for smaller screens */
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .site-header__logo {
+        margin-bottom: 10px;
+    }
+    .site-header__nav ul {
+        flex-direction: column; /* Stack nav items */
+    }
+    .site-header__nav .nav-link {
+        display: block; /* Full width for stacked items */
+        padding: 8px 0;
+        border-bottom: none; /* Remove bottom border for stacked */
+    }
+    .site-header__nav .nav-link.active {
+         border-bottom: 2px solid #e6001a; /* Re-add for active if desired, or use different active style */
+    }
+
+
+    .site-header__search {
+        width: 100%; /* Full width search bar */
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .site-header__user-actions {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start; /* Align user actions */
+    }
+    .site-header__user-actions .user-action-link {
+        margin-left: 0;
+        margin-right: 15px; /* Space between login/signup */
+    }
+
+
+    .artist-grid, .album-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+
+    .footer-container {
+        flex-direction: column; /* Stack footer columns */
+    }
+    .footer-column {
+        min-width: 100%; /* Full width for stacked columns */
+        margin-bottom: 20px;
+    }
+}
