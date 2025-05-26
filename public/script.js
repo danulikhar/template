@@ -3,10 +3,9 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const API_KEY = 'c116db33258d690ea68498890b6b24d7'; // <-- ЗАМЕНИТЕ НА ВАШ КЛЮЧ API
+    const API_KEY = 'c116db33258d690ea68498890b6b24d7';
     const BASE_URL = 'https://ws.audioscrobbler.com/2.0/';
 
-    // --- DOM Elements ---
     const hotArtistsGrid = document.querySelector('.artist-grid--hot');
     const popularTracksList = document.querySelector('.track-list--popular');
 
@@ -17,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchResultsSection = document.querySelector('.search-results-section');
     const searchQueryDisplay = document.querySelector('.search-query-display');
 
-    // Ensure these selectors target existing elements from the updated HTML structure
     const resultsArtistsContainer = searchResultsSection.querySelector('.results-artists');
     const resultsAlbumsContainer = searchResultsSection.querySelector('.results-albums');
     const resultsTracksContainer = searchResultsSection.querySelector('.results-tracks');
@@ -28,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /**
-     * Fetches data from the Last.fm API.
+     * 
      * @async
      * @param {object} params - API method parameters.
      * @returns {Promise<object>} The JSON response from the API.
@@ -50,20 +48,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const data = await response.json();
             if (data.error) {
-                // Log API specific error code and message for better debugging
                 console.error(`Last.fm API Error ${data.error}: ${data.message}`);
                 throw new Error(`Last.fm API error: ${data.message}`);
             }
             return data;
         } catch (error) {
-            // Log the full error object for more details
             console.error('Fetch error details:', error);
-            throw error; // Re-throw to be caught by calling function
+            throw error;
         }
     }
 
     /**
-     * Displays an error message in a specified container.
+     * 
      * @param {HTMLElement|null} container - The HTML element to display the error in. Can be null.
      * @param {string} message - The error message.
      */
@@ -76,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Clears the content of a specified container.
+     * 
      * @param {HTMLElement|null} container - The HTML element to clear. Can be null.
      */
     function clearContainer(container) {
@@ -102,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return defaultUrl;
     }
 
-    // --- Rendering Functions ---
 
     /**
      * Renders top artists.
@@ -239,7 +234,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- API Call Functions ---
 
     /**
      * Loads and displays top artists.

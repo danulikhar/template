@@ -1,10 +1,8 @@
-// src/App.tsx
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { fetchData, getImageUrl } from './api';
 
-// Определяем типы для данных, чтобы TypeScript помогал нам
 interface Artist {
   name: string;
   playcount: string;
@@ -13,7 +11,7 @@ interface Artist {
 }
 interface Track {
   name: string;
-  artist: { name: string } | string; // Артист может быть строкой или объектом
+  artist: { name: string } | string;
   listeners: string;
   image: any[];
 }
@@ -24,7 +22,6 @@ interface Album {
 }
 
 const App: React.FC = () => {
-  // Состояние для управления приложением
   const [view, setView] = useState<'overview' | 'search'>('overview');
   const [query, setQuery] = useState('');
   const [topArtists, setTopArtists] = useState<Artist[]>([]);
@@ -33,7 +30,6 @@ const App: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // useEffect для загрузки данных при первом рендере
   useEffect(() => {
     const loadInitialData = async () => {
       setLoading(true);
@@ -53,13 +49,12 @@ const App: React.FC = () => {
       }
     };
     loadInitialData();
-  }, []); // Пустой массив зависимостей означает, что эффект выполнится один раз
+  }, []);
 
-  // Функция для выполнения поиска
   const handleSearch = async (searchQuery: string) => {
     const trimmedQuery = searchQuery.trim();
     if (!trimmedQuery) {
-      setView('overview'); // Если поиск пуст, возвращаемся на главный экран
+      setView('overview');
       return;
     }
     
@@ -69,9 +64,9 @@ const App: React.FC = () => {
     setError(null);
 
     try {
-      const artistPromise = fetchData({ method: 'artist.search', artist: trimmedQuery, limit: '3' });
-      const albumPromise = fetchData({ method: 'album.search', album: trimmedQuery, limit: '3' });
-      const trackPromise = fetchData({ method: 'track.search', track: trimmedQuery, limit: '4' });
+      const artistPromise = fetchData({ method: 'artist.search', artist: trimmedQuery, limit: '7' });
+      const albumPromise = fetchData({ method: 'album.search', album: trimmedQuery, limit: '10' });
+      const trackPromise = fetchData({ method: 'track.search', track: trimmedQuery, limit: '10' });
 
       const [artistRes, albumRes, trackRes] = await Promise.all([artistPromise, albumPromise, trackPromise]);
 
@@ -87,7 +82,6 @@ const App: React.FC = () => {
     }
   };
 
-  // Компоненты для рендера
   const renderTopArtists = () => (
     <div className="artist-grid artist-grid--hot">
       {topArtists.map(artist => (
@@ -100,11 +94,9 @@ const App: React.FC = () => {
     </div>
   );
 
-  // ИСПРАВЛЕННАЯ ФУНКЦИЯ
   const renderTopTracks = () => (
     <div className="track-list track-list--popular">
       {topTracks.map(track => {
-        // Добавляем проверку типа и извлекаем имя артиста
         const artistName = typeof track.artist === 'string' ? track.artist : track.artist.name;
         return (
           <div key={track.name + artistName} className="track-item">
@@ -123,7 +115,6 @@ const App: React.FC = () => {
   const renderSearchResults = () => (
      <section className="search-results-section">
       <h1 className="main-title">Search results for "<span className="search-query-display">{query}</span>"</h1>
-       {/* Здесь можно добавить табы, если потребуется */}
       <section className="content-section results-artists">
         <h2 className="section-title">Artists</h2>
         <div className="artist-grid artist-grid--results">
