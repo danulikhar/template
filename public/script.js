@@ -1,5 +1,5 @@
 /**
- * @file Manages API interactions and dynamic content rendering for the Last.fm clone.
+ * @file Управляет взаимодействием с API и динамическим отображением контента для клона Last.fm.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -28,9 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
     /**
      * 
      * @async
-     * @param {object} params - API method parameters.
-     * @returns {Promise<object>} The JSON response from the API.
-     * @throws {Error} If the network response is not ok or API returns an error.
+     * @param {object} params - Параметры метода API.
+     * @returns {Promise<object>} JSON-ответ от API.
+     * @throws {Error} Если ответ сети содержит ошибку или API возвращает ошибку.
      */
     async function fetchData(params) {
         const queryParams = new URLSearchParams({
@@ -60,8 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /**
      * 
-     * @param {HTMLElement|null} container - The HTML element to display the error in. Can be null.
-     * @param {string} message - The error message.
+     * @param {HTMLElement|null} container - HTML-элемент для отображения ошибки (может быть null).
+     * @param {string} message - Текст сообщения об ошибке.
      */
     function displayError(container, message) {
         if (container) {
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /**
      * 
-     * @param {HTMLElement|null} container - The HTML element to clear. Can be null.
+     * @param {HTMLElement|null} container - HTML-элемент для очистки. Может быть null.
      */
     function clearContainer(container) {
         if (container) {
@@ -82,11 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Safely gets an image URL from an image array.
-     * @param {Array<object>|undefined} imageArray - Array of image objects from API.
-     * @param {string} desiredSize - The desired image size (e.g., 'medium', 'large', 'extralarge').
-     * @param {string} defaultUrl - A default URL if the desired image is not found.
-     * @returns {string} The image URL.
+     * Безопасно получает URL изображения из массива изображений.
+     * @param {Array<object>|undefined} imageArray - Массив объектов изображений из API.
+     * @param {string} desiredSize - Желаемый размер изображения (например, 'medium', 'large', 'extralarge').
+     * @param {string} defaultUrl - URL по умолчанию, если изображение нужного размера не найдено.
+     * @returns {string} URL изображения.
      */
     function getImageUrl(imageArray, desiredSize, defaultUrl) {
         if (imageArray && Array.isArray(imageArray)) {
@@ -100,8 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /**
-     * Renders top artists.
-     * @param {Array<object>} artists - Array of artist objects from API.
+     * Рендерит список лучших исполнителей.
+     * @param {Array<object>} artists - Массив объектов исполнителей из API.
      */
     function renderTopArtists(artists) {
         clearContainer(hotArtistsGrid);
@@ -123,8 +123,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Renders top tracks.
-     * @param {Array<object>} tracks - Array of track objects from API.
+     * Отрисовывает список популярных треков
+     * @param {Array<object>} tracks - Массив объектов треков из API
      */
     function renderTopTracks(tracks) {
         clearContainer(popularTracksList);
@@ -150,8 +150,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /**
-     * Renders artist search results.
-     * @param {Array<object>} artists - Array of artist objects from search API.
+     * Отображает результаты поиска исполнителей
+     * @param {Array<object>} artists - Массив найденных исполнителей из поискового API
      */
     function renderArtistSearchResults(artists) {
         clearContainer(resultsArtistsGrid);
@@ -177,8 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Renders album search results.
-     * @param {Array<object>} albums - Array of album objects from search API.
+     * Отображает результаты поиска альбомов
+     * @param {Array<object>} albums - Массив объектов альбомов из поискового API
      */
     function renderAlbumSearchResults(albums) {
         clearContainer(resultsAlbumsGrid);
@@ -204,8 +204,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Renders track search results.
-     * @param {Array<object>} tracks - Array of track objects from search API.
+     * Отображает результаты поиска треков
+     * @param {Array<object>} tracks - Массив объектов треков из поискового API
      */
     function renderTrackSearchResults(tracks) {
         clearContainer(resultsTracksList);
@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /**
-     * Loads and displays top artists.
+     * Загружает и отображает список лучших исполнителей
      * @async
      */
     async function loadTopArtists() {
@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Loads and displays top tracks.
+     * Загружает и отображает список лучших треков
      * @async
      */
     async function loadTopTracks() {
@@ -274,9 +274,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Performs search and displays results.
+     * Выполняет поиск и отображает результаты
      * @async
-     * @param {string} query - The search query.
+     * @param {string} query - Поисковый запрос
      */
     async function performSearch(query) {
         const trimmedQuery = query.trim();
@@ -302,11 +302,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function updateResultsDisplay() {
             if (artistsLoaded && albumsLoaded && tracksLoaded) {
-                // Optional: Add a message if all sections loaded but some had no results individually
             }
         }
 
-        // Artist Search
         if (resultsArtistsGrid) {
             fetchData({ method: 'artist.search', artist: trimmedQuery, limit: 3 })
                 .then(data => {
@@ -321,7 +319,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else { artistsLoaded = true; }
 
 
-        // Album Search
         if (resultsAlbumsGrid) {
             fetchData({ method: 'album.search', album: trimmedQuery, limit: 3 })
                 .then(data => {
@@ -335,7 +332,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 .finally(() => { albumsLoaded = true; updateResultsDisplay(); });
         } else { albumsLoaded = true; }
 
-        // Track Search
         if (resultsTracksList) {
             fetchData({ method: 'track.search', track: trimmedQuery, limit: 4 })
                 .then(data => {
@@ -351,7 +347,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- Event Listeners ---
     if (searchButton && searchInput) {
         searchButton.addEventListener('click', () => {
             performSearch(searchInput.value);
@@ -366,9 +361,6 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Search input or button not found.');
     }
 
-    /**
-     * Initializes the page by loading default content.
-     */
     function initializePage() {
         if (musicOverviewSection) musicOverviewSection.style.display = 'block';
         if (searchResultsSection) searchResultsSection.style.display = 'none';
@@ -376,7 +368,6 @@ document.addEventListener('DOMContentLoaded', () => {
         loadTopTracks();
     }
 
-    // --- Initial Load ---
     if (API_KEY === 'YOUR_LASTFM_API_KEY' || !API_KEY) {
         const mainContainer = document.querySelector('.site-main .container') || document.body;
         displayError(mainContainer, 'API Key is not configured. Please set your Last.fm API key in script.js.');

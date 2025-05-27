@@ -3,11 +3,11 @@ const BASE_URL = 'https://ws.audioscrobbler.com/2.0/';
 
 /**
  * JSDoc-комментарий:
- * Fetches data from the Last.fm API.
+ * Получает данные из API Last.fm.
  * @async
- * @param {Record<string, string>} params - API method parameters.
- * @returns {Promise<any>} The JSON response from the API.
- * @throws {Error} If the network response is not ok or API returns an error.
+ * @param {Record<string, string>} params -  Параметры метода API.
+ * @returns {Promise<any>} JSON-ответ от API.
+ * @throws {Error} Если сетевой ответ не успешен или API возвращает ошибку.
  */
 export async function fetchData(params: Record<string, string>): Promise<any> {
   const queryParams = new URLSearchParams({

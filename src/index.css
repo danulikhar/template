@@ -1,4 +1,3 @@
-/* Basic Reset & Globals */
 *,
 *::before,
 *::after {
@@ -9,7 +8,7 @@
 
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #181818; /* Dark background */
+    background-color: #181818;
     color: #ffffff;
     line-height: 1.6;
     font-size: 14px;
@@ -35,17 +34,15 @@ ul {
     list-style: none;
 }
 
-/* Container */
 .container {
     width: 90%;
-    max-width: 1100px; /* Adjusted for content, original looks wider like 1200-1400px but 1100 is safe for 1024 */
+    max-width: 1100px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 15px;
     padding-right: 15px;
 }
 
-/* App Wrapper for potential sticky footer or full height layouts */
 .app-wrapper {
     display: flex;
     flex-direction: column;
@@ -58,9 +55,8 @@ ul {
     padding-bottom: 40px;
 }
 
-/* Site Header */
 .site-header {
-    background-color: #282828; /* Slightly lighter than body */
+    background-color: #282828;
     padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid #000;
@@ -79,7 +75,7 @@ ul {
     text-decoration: none;
 }
 .site-header__logo a:hover {
-    color: #e6001a; /* Last.fm red */
+    color: #e6001a;
 }
 .site-header__logo-beta {
     font-size: 0.7em;
@@ -105,7 +101,7 @@ ul {
 .site-header__nav .nav-link:hover,
 .site-header__nav .nav-link.active {
     color: #ffffff;
-    border-bottom: 2px solid #e6001a; /* Last.fm red */
+    border-bottom: 2px solid #e6001a;
 }
 
 .site-header__search {
@@ -114,7 +110,7 @@ ul {
     background-color: #fff;
     border-radius: 4px;
     padding: 5px 8px;
-    min-width: 250px; /* Ensure it has some width */
+    min-width: 250px;
 }
 
 .site-header__search .search-input {
@@ -160,8 +156,6 @@ ul {
     text-decoration: none;
 }
 
-
-/* Main Content Typography */
 .main-title {
     font-size: 28px;
     margin-bottom: 20px;
@@ -181,7 +175,6 @@ ul {
     margin-bottom: 40px;
 }
 
-/* Artist Grid (Hot right now & Search Results) */
 .artist-grid {
     display: grid;
     gap: 20px;
@@ -196,13 +189,13 @@ ul {
 
 
 .artist-card {
-    background-color: #282828; /* Card background */
+    background-color: #282828;
     padding: 15px;
     text-align: center;
     border-radius: 4px;
 }
 .artist-card--circular .artist-card__image {
-    width: 120px; /* Smaller than placeholder to fit padding */
+    width: 120px;
     height: 120px;
     border-radius: 50%;
     margin-left: auto;
@@ -211,10 +204,10 @@ ul {
     object-fit: cover;
 }
 .artist-card--square .artist-card__image {
-    width: 100%; /* Fill card width for square */
-    max-width: 130px; /* Match placeholder used in HTML */
+    width: 100%;
+    max-width: 130px;
     height: auto;
-    aspect-ratio: 1 / 1; /* Make it square */
+    aspect-ratio: 1 / 1;
     margin-bottom: 10px;
     object-fit: cover;
     border-radius: 2px;
@@ -237,7 +230,6 @@ ul {
     color: #b3b3b3;
 }
 
-/* Track List (Popular & Search Results) */
 .track-list {
     display: flex;
     flex-direction: column;
@@ -247,9 +239,9 @@ ul {
 .track-item {
     display: flex;
     align-items: center;
-    background-color: transparent; /* Or #282828 if cards are desired */
-    padding: 8px 0; /* Minimal padding for list items */
-    border-bottom: 1px solid #333; /* Separator for popular tracks */
+    background-color: transparent;
+    padding: 8px 0;
+    border-bottom: 1px solid #333;
 }
 .track-list--popular .track-item:last-child {
     border-bottom: none;
@@ -271,7 +263,7 @@ ul {
 .track-item__title {
     font-size: 1em;
     color: #ffffff;
-    font-weight: normal; /* Titles are not overly bold in example */
+    font-weight: normal;
 }
 .track-item__title:hover {
     text-decoration: underline;
@@ -287,7 +279,6 @@ ul {
     font-size: 0.75em;
 }
 
-/* Search Results Specifics */
 .search-results-section .main-title {
     font-size: 24px;
     margin-bottom: 15px;
@@ -308,7 +299,7 @@ ul {
     color: #b3b3b3;
     text-decoration: none;
     font-weight: bold;
-    display: inline-block; /* For padding and border */
+    display: inline-block;
     border-bottom: 3px solid transparent;
 }
 .search-results-tabs .tab-link:hover {
@@ -316,17 +307,17 @@ ul {
 }
 .search-results-tabs .tab-link.active {
     color: #ffffff;
-    border-bottom-color: #e6001a; /* Last.fm red */
+    border-bottom-color: #e6001a;
 }
 
 .section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px; /* Reduced from section-title's default */
+    margin-bottom: 15px;
 }
 .section-header .section-title {
-    margin-top: 0; /* Reset margin as it's inside section-header */
+    margin-top: 0;
     margin-bottom: 0;
     border-bottom: none;
     padding-bottom: 0;
@@ -341,7 +332,6 @@ ul {
     color: #ffffff;
 }
 
-/* Album Grid (Search Results) */
 .album-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
@@ -356,7 +346,6 @@ ul {
 
 .album-card__cover {
     width: 100%;
-    /* max-width: 170px; */ /* Handled by grid column size */
     aspect-ratio: 1 / 1;
     object-fit: cover;
     margin-bottom: 10px;
@@ -378,10 +367,8 @@ ul {
     color: #b3b3b3;
 }
 
-/* Track List (Search Results specifics) */
 .track-list--results .track-item {
-    /* Similar to popular, but with play icon and duration */
-    border-bottom: 1px solid #333; /* Ensure all items have a border */
+    border-bottom: 1px solid #333;
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -393,7 +380,7 @@ ul {
 .track-item__play-icon {
     color: #b3b3b3;
     margin-right: 10px;
-    font-size: 1.2em; /* Make play icon slightly larger */
+    font-size: 1.2em;
     cursor: pointer;
 }
 .track-item__play-icon:hover {
@@ -401,14 +388,13 @@ ul {
 }
 
 .track-item__duration {
-    margin-left: auto; /* Pushes duration to the right */
-    padding-left: 15px; /* Space from track info */
+    margin-left: auto;
+    padding-left: 15px;
     font-size: 0.9em;
     color: #b3b3b3;
 }
 
 
-/* Site Footer */
 .site-footer {
     background-color: #282828;
     color: #b3b3b3;
@@ -421,14 +407,14 @@ ul {
 .footer-container {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap; /* Allow columns to wrap on smaller screens if needed */
-    gap: 20px; /* Space between columns */
+    flex-wrap: wrap;
+    gap: 20px;
     margin-bottom: 20px;
 }
 
 .footer-column {
-    flex: 1; /* Allow columns to grow and shrink */
-    min-width: 150px; /* Minimum width before wrapping */
+    flex: 1;
+    min-width: 150px;
 }
 
 .footer-column__title {
@@ -473,28 +459,21 @@ ul {
 .footer-language-switcher a {
     margin-left: 5px;
 }
-.footer-language-switcher span { /* Current language */
+.footer-language-switcher span {
     color: #fff;
 }
 
-/* Responsive adjustments for 1024px */
 @media (max-width: 1024px) {
     .container {
-        width: 95%; /* Use more width on smaller screens */
+        width: 95%;
     }
 
-    .site-header__nav {
-        /* Could hide some nav items or make them a burger menu on smaller views,
-           but for 1024 the current setup might still fit.
-           If not, adjust font size or padding. */
-        /* Example: display: none; and add a burger menu icon */
-    }
     .site-header__search {
-        min-width: 200px; /* Slightly reduce search bar width */
+        min-width: 200px;
     }
 
     .artist-grid--hot {
-        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); /* Adjust card sizes */
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     }
     .artist-card--circular .artist-card__image {
         width: 100px;
@@ -506,7 +485,7 @@ ul {
 
 }
 
-@media (max-width: 768px) { /* Further adjustments for smaller screens */
+@media (max-width: 768px) {
     .header-container {
         flex-direction: column;
         align-items: flex-start;
@@ -515,20 +494,20 @@ ul {
         margin-bottom: 10px;
     }
     .site-header__nav ul {
-        flex-direction: column; /* Stack nav items */
+        flex-direction: column;
     }
     .site-header__nav .nav-link {
-        display: block; /* Full width for stacked items */
+        display: block;
         padding: 8px 0;
-        border-bottom: none; /* Remove bottom border for stacked */
+        border-bottom: none;
     }
     .site-header__nav .nav-link.active {
-         border-bottom: 2px solid #e6001a; /* Re-add for active if desired, or use different active style */
+         border-bottom: 2px solid #e6001a;
     }
 
 
     .site-header__search {
-        width: 100%; /* Full width search bar */
+        width: 100%;
         margin-top: 10px;
         margin-bottom: 10px;
     }
@@ -536,11 +515,11 @@ ul {
         margin-top: 10px;
         width: 100%;
         display: flex;
-        justify-content: flex-start; /* Align user actions */
+        justify-content: flex-start;
     }
     .site-header__user-actions .user-action-link {
         margin-left: 0;
-        margin-right: 15px; /* Space between login/signup */
+        margin-right: 15px;
     }
 
 
@@ -549,10 +528,10 @@ ul {
     }
 
     .footer-container {
-        flex-direction: column; /* Stack footer columns */
+        flex-direction: column;
     }
     .footer-column {
-        min-width: 100%; /* Full width for stacked columns */
+        min-width: 100%;
         margin-bottom: 20px;
     }
 }
